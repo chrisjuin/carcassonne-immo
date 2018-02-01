@@ -38,7 +38,7 @@ class Admin
     /**
      * @var int
      *
-     * @ORM\Column(name="adm_telephone", type="integer")
+     * @ORM\Column(name="adm_telephone", type="string")
      */
     private $telephone;
 
