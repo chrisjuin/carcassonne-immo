@@ -38,10 +38,15 @@ class Client
     /**
      * @var int
      *
-     * @ORM\Column(name="cli_telephone", type="integer")
+     * @ORM\Column(name="cli_telephone", type="string", length=10)
      */
     private $telephone;
 
+    
+    public function __toString()
+    {    
+        return $this->getPrenom()." " . $this->getNom() . "  " .$this->getTelephone(); 
+    } 
 
     /**
      * Get id

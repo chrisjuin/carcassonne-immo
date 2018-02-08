@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Admin controller.
  *
- * @Route("admin")
+ * @Route("admin/admin")
  */
 class AdminController extends Controller
 {
     /**
      * Lists all admin entities.
      *
-     * @Route("/", name="admin_index")
+     * @Route("/", name="admin_admin_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class AdminController extends Controller
     /**
      * Creates a new admin entity.
      *
-     * @Route("/new", name="admin_new")
+     * @Route("/new", name="admin_admin_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,7 +48,7 @@ class AdminController extends Controller
             $em->persist($admin);
             $em->flush();
 
-            return $this->redirectToRoute('admin_show', array('id' => $admin->getId()));
+            return $this->redirectToRoute('admin_admin_show', array('id' => $admin->getId()));
         }
 
         return $this->render('admin/new.html.twig', array(
@@ -60,7 +60,7 @@ class AdminController extends Controller
     /**
      * Finds and displays a admin entity.
      *
-     * @Route("/{id}", name="admin_show")
+     * @Route("/{id}", name="admin_admin_show")
      * @Method("GET")
      */
     public function showAction(Admin $admin)
@@ -76,7 +76,7 @@ class AdminController extends Controller
     /**
      * Displays a form to edit an existing admin entity.
      *
-     * @Route("/{id}/edit", name="admin_edit")
+     * @Route("/{id}/edit", name="admin_admin_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Admin $admin)
@@ -88,7 +88,7 @@ class AdminController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_edit', array('id' => $admin->getId()));
+            return $this->redirectToRoute('admin_admin_edit', array('id' => $admin->getId()));
         }
 
         return $this->render('admin/edit.html.twig', array(
@@ -101,7 +101,7 @@ class AdminController extends Controller
     /**
      * Deletes a admin entity.
      *
-     * @Route("/{id}", name="admin_delete")
+     * @Route("/{id}", name="admin_admin_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Admin $admin)
@@ -115,7 +115,7 @@ class AdminController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('admin_index');
+        return $this->redirectToRoute('admin_admin_index');
     }
 
     /**
@@ -128,7 +128,7 @@ class AdminController extends Controller
     private function createDeleteForm(Admin $admin)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_delete', array('id' => $admin->getId())))
+            ->setAction($this->generateUrl('admin_admin_delete', array('id' => $admin->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

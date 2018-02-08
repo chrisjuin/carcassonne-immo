@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type_annonce
+ * Type
  *
- * @ORM\Table(name="typ_type_annonce")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Type_annonceRepository")
+ * @ORM\Table(name="typ_type")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TypeRepository")
  */
-class Type_annonce
+class Type
 {
     /**
      * @var int
@@ -25,12 +25,17 @@ class Type_annonce
      * @var string
      *
      * @ORM\Column(name="typ_type", type="string", length=255)
-     */
+     */     
     private $type;
 
+    
+    public function __toString()
+    {    
+        return (string) $this->getType();
+    }
 
     /**
-     * Get id
+     * Get id   
      *
      * @return int
      */
@@ -44,7 +49,7 @@ class Type_annonce
      *
      * @param string $type
      *
-     * @return Type_annonce
+     * @return Type
      */
     public function setType($type)
     {
