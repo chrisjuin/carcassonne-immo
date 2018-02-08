@@ -143,8 +143,18 @@ assetic:
             output: "fonts/glyphicons-halflings-regular.woff"
 
 easy_admin: 
+    site_name: "Carcassone Immo" 
     entities: 
-        - AppBundle\Entity\Admin
-        - AppBundle\Entity\Annonce
-        - AppBundle\Entity\Client
-        - AppBundle\Entity\Type_annonce
+        Admin: 
+            class: AppBundle\Entity\Admin
+        
+        Annonce:
+            class: AppBundle\Entity\Annonce
+            list:
+                title
+
+        Client:
+            class: AppBundle\Entity\Client
+        
+        Type:
+            class: AppBundle\Entity\Type

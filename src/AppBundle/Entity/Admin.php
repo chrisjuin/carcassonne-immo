@@ -43,6 +43,11 @@ class Admin
     private $telephone;
 
 
+    public function __toString()
+    {
+        return $this->getPrenom()." ". $this->getNom()." ". $this->getTelephone();
+    }
+
     /**
      * Get id
      *

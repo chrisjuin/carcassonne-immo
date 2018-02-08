@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AnnonceRepository")
  */
 class Annonce
-{
+{   
     /**
      * @var int
      *
@@ -56,12 +56,11 @@ class Annonce
      */
     private $photo;
 
-    
     /**
-     * @ORM\ManyToOne(targetEntity="Type_annonce", inversedBy="annonces")
+     * @ORM\ManyToOne(targetEntity="Type", inversedBy="annonces")
      * @ORM\JoinColumn(name="typ_id", referencedColumnName="typ_id")
      */
-    private $type_annonce;
+    private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="annonces")
@@ -74,6 +73,13 @@ class Annonce
      * @ORM\JoinColumn(name="adm_id", referencedColumnName="adm_id")
      */
     private $admin;
+
+    
+    public function __toString()
+    {    
+    return $this->getprix()." ".$this->getTitre(). " ".$this->getDescription()
+    . " ".$this->getNbPieces(). " ". $this->getPhoto(). " ". (string) $this->getType() ." ". (string) $this->getClient() . " ". $this->getUser(). " ". $this->getAdmin();
+    }   
 
     /**
      * Get id
@@ -204,5 +210,79 @@ class Annonce
     {
         return $this->photo;
     }
+
+    /**
+     * Set type
+     * @param string $type
+     *
+     * @return Annonce
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+    
+    /**
+     * Set client
+     *
+     * @param string $client
+     *
+     * @return Annonce
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+        
+        return $this;
+    }
+    
+    /**
+     * Get client
+     *
+     * @return string
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+    
+    /**
+     * Set admin
+     *
+     * @param string $admin
+     *
+     * @return Annonce
+     */
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+        
+        return $this;
+    }
+    
+    /**
+     * Get admin
+     *
+     * @return string
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+    
 }
+
+
 
