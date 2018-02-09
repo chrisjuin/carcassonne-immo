@@ -77,8 +77,8 @@ class Annonce
     
     public function __toString()
     {    
-    return $this->getprix()." ".$this->getTitre(). " ".$this->getDescription()
-    . " ".$this->getNbPieces(). " ". $this->getPhoto(). " ". (string) $this->getType() ." ". (string) $this->getClient() . " ". $this->getUser(). " ". $this->getAdmin();
+    return $this->getprix()." ". (string) $this->getTitre(). " ".(string )$this->getDescription()
+    . " ".$this->getNbPieces(). " ". (string) $this->getPhoto(). " ". (string) $this->getType() ." ". (string) $this->getClient() . " ". $this->getUser(). " ". $this->getAdmin();
     }   
 
     /**

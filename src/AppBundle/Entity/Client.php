@@ -45,7 +45,7 @@ class Client
     
     public function __toString()
     {    
-        return $this->getPrenom()." " . $this->getNom() . "  " .$this->getTelephone(); 
+        return (string) $this->getPrenom()." " . (string) $this->getNom() . "  " . (string) $this->getTelephone(); 
     } 
 
     /**

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Form\Exception\StringCastException;
 
 /**
  * Admin
@@ -45,7 +46,7 @@ class Admin
 
     public function __toString()
     {
-        return $this->getPrenom()." ". $this->getNom()." ". $this->getTelephone();
+        return (string) $this->getPrenom()." ". (string) $this->getNom()." ". (string) $this->getTelephone();
     }
 
     /**
